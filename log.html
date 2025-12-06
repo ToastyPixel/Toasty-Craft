@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <meta charset="UTF-8" />
+  <title>Toasty Craft – News Archive</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Toasty Craft news archive – older updates, resets, and plugin changes.">
+
+  <style>
+    /* ========= BASIC THEME (matches your main page) ========= */
+    :root {
+      --bg: #050609;
+      --bg-card: #0b0f18;
+      --accent: #00d9ff;
+      --accent-soft: rgba(0, 217, 255, 0.14);
+      --text: #f5f5f5;
+      --muted: #a0a7b8;
+      --border: #1b2233;
+      --danger: #ff4a4a;
+      --font: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 16px;
+      font-family: var(--font);
+      background: radial-gradient(circle at top, #131a2b 0, #050609 50%, #000 100%);
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 900px;
+      background: rgba(3, 5, 10, 0.96);
+      border-radius: 18px;
+      border: 1px solid rgba(0,0,0,0.7);
+      padding: 18px 18px 22px;
+    }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 10px;
+      margin-bottom: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .title-block {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .server-name {
+      font-size: 1.5rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .server-tagline {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 0.8rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 4px 9px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      background: rgba(5,7,13,0.9);
+    }
+
+    nav a:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .card {
+      background: var(--bg-card);
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      padding: 12px 12px 14px;
+    }
+
+    .card-title {
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .hero-name {
+      font-size: 1.6rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+    }
+
+    .hero-text {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .mini-note {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    a { color: var(--accent); }
+
+    /* ========= ARCHIVE LAYOUT ========= */
+    .archive-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      gap: 10px;
+    }
+
+    .year-block {
+      border: 1px solid #151c2b;
+      background: #090d16;
+      border-radius: 12px;
+      padding: 10px;
+    }
+
+    .year-title {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      margin: 2px 0 8px;
+    }
+
+    .news-item {
+      margin-bottom: 8px;
+      padding: 9px 10px;
+      border-radius: 9px;
+      background: #0b1020;
+      border: 1px solid #151c2b;
+    }
+
+    .news-item:last-child { margin-bottom: 0; }
+
+    .news-date {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--muted);
+      margin-bottom: 2px;
+    }
+
+    .news-title {
+      font-size: 0.95rem;
+      font-weight: 650;
+      margin-bottom: 3px;
+    }
+
+    .news-body {
+      font-size: 0.84rem;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+
+    /* ========= OPTIONAL TAGS ========= */
+    .tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 0.68rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      background: rgba(5,7,13,0.9);
+    }
+
+    .tag.reset {
+      border-color: rgba(255, 74, 74, 0.4);
+      color: #ff9a9a;
+      background: rgba(255, 74, 74, 0.08);
+    }
+
+    .tag.plugin {
+      border-color: rgba(0, 217, 255, 0.35);
+      color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    footer {
+      margin-top: 14px;
+      padding-top: 10px;
+      border-top: 1px solid var(--border);
+      font-size: 0.78rem;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+
+<body>
+<div class="page">
+
+  <!-- ========= HEADER ========= -->
+  <header>
+    <div class="title-block">
+      <div class="server-name">Toasty Craft – News Archive</div>
+      <div class="server-tagline">Older updates • Past resets • Plugin history</div>
+    </div>
+    <nav>
+      <a href="#join">Join</a>
+      <a href="#news">News</a>
+      <a href="#about">Info</a>
+      <a href="#rules">Rules</a>
+      <a href="#commands">Commands</a>
+      <a href="#images">Images</a>
+      <a href="plugins.html">My Plugins</a>
+      <!-- EDIT: put your real Discord link here -->
+      <a href="https://discord.gg/jreS46Kp8M" target="_blank" rel="noopener">Discord HERE!!!!</a>
+    </nav>
+  </header>
+
+  <!-- ========= INTRO ========= -->
+  <section class="card">
+    <div class="card-title">News/Updates log</div>
+    <div class="hero-name">Everything That Has Changed</div>
+    <p class="hero-text">
+    this is the full list of every single update or news
+    </p>
+  </section>
+
+  <!-- ========= 2025 ========= -->
+  <section class="card" style="margin-top: 14px;">
+    <div class="card-title">News by Year</div>
+
+    <div class="archive-grid">
+
+      <div class="year-block">
+        <div class="year-title">2025</div>
+
+        <!-- You can copy/paste these items to add more -->
+
+        <div class="news-item">
+          <div class="news-date">2 December 2025</div>
+          <div class="news-title">Server Reset – Fresh Start</div>
+          <div class="news-body">
+            The world was fully reset after the <code>/dupe</code> experiment
+            flooded the economy and removed the point of survival progression.
+            The wipe brings back the grind, the risk, and the fun.
+          </div>
+          <div class="tag-row">
+            <span class="tag reset">Reset</span>
+            <span class="tag">Survival</span>
+          </div>
+        </div>
+
+        <div class="news-item">
+          <div class="news-date">30 November 2025</div>
+          <div class="news-title">Discord Server Created</div>
+          <div class="news-body">
+            The official Toasty Craft Discord went live for chat, updates,
+            bug reports, and general chaos coordination.
+          </div>
+          <div class="tag-row">
+            <span class="tag">Community</span>
+          </div>
+        </div>
+
+        <div class="news-item">
+          <div class="news-date">30 November 2025</div>
+          <div class="news-title"><code>/home</code> Warmup Balance Patch</div>
+          <div class="news-body">
+            <code>/home</code> now has a 30-second warmup.
+            Moving during the countdown cancels the teleport.
+            This stops <code>/home</code> being an instant PvP escape.
+          </div>
+          <div class="tag-row">
+            <span class="tag plugin">Plugin</span>
+            <span class="tag">Balance</span>
+          </div>
+        </div>
+
+        <div class="news-item">
+          <div class="news-date">29 November 2025</div>
+          <div class="news-title">Home Limit Increased</div>
+          <div class="news-body">
+            Max homes increased from 6 to 8 to support longer-term base life
+            and multi-location survival play.
+          </div>
+          <div class="tag-row">
+            <span class="tag plugin">Plugin</span>
+          </div>
+        </div>
+
+        <div class="news-item">
+          <div class="news-date">21 November 2025</div>
+          <div class="news-title">Server Launched</div>
+          <div class="news-body">
+            Toasty Craft opened its doors. No lobby, no hand-holding —
+            just a harsh survival world and the freedom to build, raid,
+            or disappear into the wilderness.
+          </div>
+          <div class="tag-row">
+            <span class="tag">Launch</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- ========= TEMPLATE YEAR BLOCK (copy this for 2026, 2024, etc.) ========= -->
+      <!--
+      <div class="year-block">
+        <div class="year-title">2024</div>
+
+        <div class="news-item">
+          <div class="news-date">DATE</div>
+          <div class="news-title">TITLE</div>
+          <div class="news-body">
+            BODY TEXT
+          </div>
+          <div class="tag-row">
+            <span class="tag">Tag</span>
+          </div>
+        </div>
+
+      </div>
+      -->
+
+    </div>
+  </section>
+
+  <!-- ========= FOOTER ========= -->
+  <footer>
+    <span>Toasty Craft is not affiliated with Mojang or Microsoft.</span>
+    <!-- EDIT: add your real contact email if you want -->
+    <span> Toasty Craft</span>
+  </footer>
+
+</div>
+
+<script>
+  // Footer year (this page includes the #year element)
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
