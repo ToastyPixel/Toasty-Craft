@@ -181,51 +181,7 @@
       color: var(--muted);
       line-height: 1.35;
     }
-
-    /* ========= OPTIONAL TAGS ========= */
-    .tag-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 6px;
-    }
-
-    .tag {
-      display: inline-flex;
-      align-items: center;
-      padding: 2px 8px;
-      border-radius: 999px;
-      font-size: 0.68rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      border: 1px solid var(--border);
-      color: var(--muted);
-      background: rgba(5,7,13,0.9);
-    }
-
-    .tag.reset {
-      border-color: rgba(255, 74, 74, 0.4);
-      color: #ff9a9a;
-      background: rgba(255, 74, 74, 0.08);
-    }
-
-    .tag.plugin {
-      border-color: rgba(0, 217, 255, 0.35);
-      color: var(--accent);
-      background: var(--accent-soft);
-    }
-
-    footer {
-      margin-top: 14px;
-      padding-top: 10px;
-      border-top: 1px solid var(--border);
-      font-size: 0.78rem;
-      color: var(--muted);
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      justify-content: space-between;
-    }
+    
   </style>
 </head>
 
@@ -255,105 +211,99 @@
     </p>
   </section>
 
-  <!-- ========= 2025 ========= -->
-  <section class="card" style="margin-top: 14px;">
-    <div class="card-title">News by Year</div>
+<!-- ========= 2025 ========= -->
+<section class="card" style="margin-top: 14px;">
+  <div class="card-title">News by Year</div>
 
-    <div class="archive-grid">
+  <div class="archive-grid">
+    <div class="year-block">
+      <div class="year-title">2025</div>
 
-      <div class="year-block">
-        <div class="year-title">2025</div>
+      <!-- You can copy/paste these items to add more -->
 
-        <!-- You can copy/paste these items to add more -->
-
-        <div class="news-item">
-          <div class="news-date">2 December 2025</div>
-          <div class="news-title">Server Reset – Fresh Start</div>
-          <div class="news-body">
-            The world was fully reset after the <code>/dupe</code> experiment
-            flooded the economy and removed the point of survival progression.
-            The wipe brings back the grind, the risk, and the fun.
-          </div>
-          <div class="tag-row">
-            <span class="tag reset">Reset</span>
-            <span class="tag">Survival</span>
-          </div>
+      <div class="news-item">
+        <div class="news-date">7 December 2025</div>
+        <div class="news-title">Agree Plugin Updated</div>
+        <div class="news-body">
+          The Agree plugin was updated from 1.0.0 to 1.0.3. This is my own plugin —
+          check it out <a href="https://modrinth.com/plugin/agree">here</a>.
         </div>
-
-        <div class="news-item">
-          <div class="news-date">30 November 2025</div>
-          <div class="news-title">Discord Server Created</div>
-          <div class="news-body">
-            The official Toasty Craft Discord went live for chat, updates,
-            bug reports, and general chaos coordination.
-          </div>
-          <div class="tag-row">
-            <span class="tag">Community</span>
-          </div>
-        </div>
-
-        <div class="news-item">
-          <div class="news-date">30 November 2025</div>
-          <div class="news-title"><code>/home</code> Warmup Balance Patch</div>
-          <div class="news-body">
-            <code>/home</code> now has a 30-second warmup.
-            Moving during the countdown cancels the teleport.
-            This stops <code>/home</code> being an instant PvP escape.
-          </div>
-          <div class="tag-row">
-            <span class="tag plugin">Plugin</span>
-            <span class="tag">Balance</span>
-          </div>
-        </div>
-
-        <div class="news-item">
-          <div class="news-date">29 November 2025</div>
-          <div class="news-title">Home Limit Increased</div>
-          <div class="news-body">
-            Max homes increased from 6 to 8 to support longer-term base life
-            and multi-location survival play.
-          </div>
-          <div class="tag-row">
-            <span class="tag plugin">Plugin</span>
-          </div>
-        </div>
-
-        <div class="news-item">
-          <div class="news-date">21 November 2025</div>
-          <div class="news-title">Server Launched</div>
-          <div class="news-body">
-            Toasty Craft opened its doors. No lobby, no hand-holding —
-            just a harsh survival world and the freedom to build, raid,
-            or disappear into the wilderness.
-          </div>
-          <div class="tag-row">
-            <span class="tag">Launch</span>
-          </div>
-        </div>
-
       </div>
 
-      <!-- ========= TEMPLATE YEAR BLOCK (copy this for 2026, 2024, etc.) ========= -->
-      <!--
-      <div class="year-block">
-        <div class="year-title">2024</div>
-
-        <div class="news-item">
-          <div class="news-date">DATE</div>
-          <div class="news-title">TITLE</div>
-          <div class="news-body">
-            BODY TEXT
-          </div>
-          <div class="tag-row">
-            <span class="tag">Tag</span>
-          </div>
+      <div class="news-item">
+        <div class="news-date">2 December 2025</div>
+        <div class="news-title">Server Reset – Fresh Start</div>
+        <div class="news-body">
+          The world was fully reset after the <code>/dupe</code> experiment
+          flooded the economy and removed the point of survival progression.
+          The wipe brings back the grind, the risk, and the fun.
         </div>
-
       </div>
-      -->
+
+      <div class="news-item">
+        <div class="news-date">30 November 2025</div>
+        <div class="news-title">Discord Server Created</div>
+        <div class="news-body">
+          The official Toasty Craft Discord went live for chat, updates,
+          bug reports, and general chaos coordination.
+        </div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-date">30 November 2025</div>
+        <div class="news-title"><code>/home</code> Warmup Balance Patch</div>
+        <div class="news-body">
+          <code>/home</code> now has a 30-second warmup.
+          Moving during the countdown cancels the teleport.
+          This stops <code>/home</code> being an instant PvP escape.
+        </div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-date">29 November 2025</div>
+        <div class="news-title">Home Limit Increased</div>
+        <div class="news-body">
+          Max homes increased from 6 to 8 to support longer-term base life
+          and multi-location survival play.
+        </div>
+      </div>
+
+      <div class="news-item">
+        <div class="news-date">21 November 2025</div>
+        <div class="news-title">Server Launched</div>
+        <div class="news-body">
+          Toasty Craft opened its doors. No lobby, no hand-holding —
+          just a harsh survival world and the freedom to build, raid,
+          or disappear into the wilderness.
+        </div>
+      </div>
 
     </div>
-  </section>
+  </div>
+</section>
+
+
+
+<!-- ========= TEMPLATE YEAR BLOCK (copy this for 2026, 2024, etc.) ========= -->
+
+
+<!--
+<div class="year-block">
+  <div class="year-title">2024</div>
+
+  <div class="news-item">
+    <div class="news-date">DATE</div>
+    <div class="news-title">TITLE</div>
+    <div class="news-body">
+      BODY TEXT
+    </div>
+  </div>
+
+</div>
+-->
+
+
+
 
   <!-- ========= FOOTER ========= -->
   <footer>
